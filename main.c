@@ -92,7 +92,9 @@ int main(int argc, char* argv[]) {
     while (emu->eip < MEMORY_SIZE) {
         uint8_t code = get_code8(emu, 0);
         if (!quiet) {
-            printf("EIP = %X, Code = %02X\n", emu->eip, code);
+            uint32_t esi = get_register32(emu, ESI);
+            uint8_t al = get_register8(emu, AL);
+            printf("EIP = %X, ESI = %X, AL = %X, Code = %02X\n", emu->eip, esi, al, code);
         }
         if (instructions[code] == NULL) {
             printf("\n\nNot Implemented: %x : eip=%x\n", code, emu->eip - 0x7c00);

@@ -45,8 +45,8 @@ static void mov_r8_rm8(Emulator* emu) {
     emu->eip += 1;
     ModRM modrm;
     parse_modrm(emu, &modrm);
-    uint32_t r8 = get_r8(emu, &modrm);
-    set_rm8(emu, &modrm, r8);
+    uint32_t rm8 = get_rm8(emu, &modrm);
+    set_r8(emu, &modrm, rm8);
 }
 
 static void mov_r32_imm32(Emulator* emu) {
